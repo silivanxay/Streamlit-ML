@@ -1,0 +1,13 @@
+mglearn
+numpy
+scipy
+scikit-learn
+matplotlib
+pandas
+#website
+streamlit==1.0.0
+#import excel
+plotly
+#syntax
+pep8
+pyright
