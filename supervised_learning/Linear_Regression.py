@@ -3,6 +3,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 import pandas as pd
+import numpy as np
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -69,23 +70,21 @@ if file:
 
     # generating the scatter plot
     st.write("Generating the scatter plot")
-    fig = px.scatter(x=x_test.flatten(), y=y_test, )
+    fig = px.scatter(x=x_test.flatten(), y=y_test,
+                     labels={'x': x_label, 'y': y_label})
     fig.add_trace(
         go.Scatter(x=x_test.flatten(), y=y_pred, name="predict",  mode='markers',
                    marker=dict(
                        color='red',
                    ), )
     )
-    fig.add_shape(
-        type='line',
-        x0=1.3,
-        y0=37393,
-        x1=10.5,
-        y1=125512,
-        line=dict(
-            color='Red',
-        )
-    )
+
+    x_range = np.linspace(x_test.flatten().min(), x_test.flatten().max(), 100)
+    y_range = model.predict(x_range.reshape(-1, 1))
+    fig.add_traces(go.Scatter(x=x_range, y=y_range, name='Regression Fit',
+                              marker=dict(
+                                    color='red',)
+                              ,),)
     st.plotly_chart(fig)
 
     st.subheader("For example")
