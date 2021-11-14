@@ -1,13 +1,15 @@
-mglearn
+# Machine learning
 numpy
 scipy
 scikit-learn
-matplotlib
 pandas
-#website
+fuzzy-c-means
+
+# Website and UI
 streamlit==1.0.0
-#import excel
 plotly
-#syntax
+matplotlib
+
+# Syntax
 pep8
 pyright
