@@ -18,11 +18,9 @@ if file:
 
     # Let x be the set of feature values and y as target value.
     x = data[['Sepal.Length', 'Sepal.Width', 'Petal.Length', 'Petal.Width']].values
-    y = data['Species'].values
 
 
-    # Train the classifier by passing in the training set data in X_train,
-    # and the labels in y_train to the classifiers fit method.
+    # Train the clustering by passing in the training set data in X.
     model = FCM(n_clusters=3)
     model.fit(x)
 
@@ -42,6 +40,7 @@ if file:
     }
     st.write(mapping_label)
 
+    y = data['Species'].values
     # outputs
     y_predict = [mapping_label[value] for value in model.predict(x)]
 
@@ -83,7 +82,7 @@ if file:
     )
     st.plotly_chart(fig)
 
-    # If we ask the classifier to predict the label using the predict method.
+    # If we ask the clustering to predict the label using the predict method.
     example_prediction = mapping_label[model.predict(input)[0]]
     if st.sidebar.button('Predict'):
         st.subheader('= {}'.format(example_prediction))
