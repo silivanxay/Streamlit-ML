@@ -70,7 +70,7 @@ if file:
 
     st.subheader("Data Visualize")
     # Plot fruit's 3 features and classifier to 3d plot
-    fig = px.scatter_3d(data, x='Sepal.Length', y='Sepal.Width', z='Petal.Length', size='Petal.Width',
+    fig = px.scatter_3d(predict_data, x='Sepal.Length', y='Sepal.Width', z='Petal.Length', size='Petal.Width',
                         color='Species', )
     fig.add_trace(
         go.Scatter3d(x=[input[0]], y=[input[1]], z=[input[2]], name="Point2predict", mode='markers',
